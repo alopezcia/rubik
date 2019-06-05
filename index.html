@@ -58,8 +58,13 @@
 
     <!-- Añadimos cobertura para el Service Worker-->
     <script>
+      var url = window.location.href;
+      var swLocaltion = '/rubik/sw.js';
       if( navigator.serviceWorker ){
-        navigator.serviceWorker.register('/sw.js');
+        if( url.includes('localhost')){
+          swLocaltion='/sw.js';
+        }
+        navigator.serviceWorker.register(swLocation);
       }
     </script>
 
