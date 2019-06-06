@@ -3,7 +3,7 @@ importScripts('scripts/sw-utils.js');
 
 // Usamos tres caches para elementos que no van a variar nada (inmutable) poco conocido (static) poco desconocido (dynamic)
 const DYNAMIC_CACHE = 'dynamic-v1';
-const STATIC_CACHE = 'static-v1';
+const STATIC_CACHE = 'static-v2';
 const INMUTABLE_CACHE = 'inmutable-v1';
 
 const APP_SHELL = [
@@ -14,6 +14,12 @@ const APP_SHELL = [
     'styles/doodle2.css',
     'scripts/cuber.min.js',
     'media/static-cube.png',
+    'media/Erno_Signature_400x120.png',
+    'media/favicon.ico',
+    'media/Larry_Signature_400x120.png',
+    'media/LogoFaces_0000_Goo.png',
+    'media/LogoFaces_0001_gle.png',
+    'media/LogoFaces_0002_white.png',
     'scripts/iecss3d.js',
     'scripts/ierenderer.js',
     'scripts/deviceMotion.js',
@@ -45,6 +51,9 @@ self.addEventListener('activate', event => {
     const respuesta = caches.keys().then( keys => {
         keys.forEach( key => {
             if( key !== STATIC_CACHE && key.includes('static')){
+                return caches.delete(key);
+            }
+            if (  key !== DYNAMIC_CACHE && key.includes('dynamic') ) {
                 return caches.delete(key);
             }
         });

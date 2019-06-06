@@ -14,6 +14,7 @@ body {
   -ms-user-select:none;
   -webkit-tap-highlight-color:transparent;
   -webkit-user-select:none;
+  -webkit-touch-callout: none;
 }
 #fail {
   position: absolute;
